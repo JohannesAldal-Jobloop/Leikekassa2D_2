@@ -19,8 +19,6 @@ public class KuleRestriksjoner : MonoBehaviour
 
     public void KuleRestriksjonerFunk(Vector2 opprinnelse, float maksRekkevidde, GameObject kula)
     {
-        Gizmos.DrawWireSphere(opprinnelse, maksRekkevidde);
-
         if (!Physics2D.OverlapCircle(opprinnelse, maksRekkevidde, 10))
         {
             Destroy(kula);
