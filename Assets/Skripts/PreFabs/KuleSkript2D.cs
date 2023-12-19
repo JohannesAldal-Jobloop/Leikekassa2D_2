@@ -18,6 +18,7 @@ public class KuleSkript2D : MonoBehaviour
     private Rigidbody2D kulaRB;
 
     private KuleRestriksjoner kuleRestriksjoner;
+    private TarSkade2D tarSkade2D;
 
     void Start()
     {
@@ -38,7 +39,8 @@ public class KuleSkript2D : MonoBehaviour
 
     void BevegFramover()
     {
-        kulaRB.AddRelativeForce(Vector2.down * fart *Time.deltaTime, ForceMode2D.Force);
+        //kulaRB.AddRelativeForce(Vector2.down * fart *Time.deltaTime, ForceMode2D.Force);
+        gameObject.transform.Translate(Vector2.down * fart * Time.deltaTime);
     }
 
     void BulletRestriksjoner()
@@ -73,5 +75,35 @@ public class KuleSkript2D : MonoBehaviour
     {
         spawnPositionX = transform.position.x;
         spawnPositionY = transform.position.y;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Traff noko trigger");
+        if(other.GetComponent<TarSkade2D>() != null)
+        {
+            tarSkade2D = other.GetComponent<TarSkade2D>();
+
+            tarSkade2D.TaSkade(skade);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Traff noko collider");
+        if (collision.transform.GetComponent<TarSkade2D>() != null)
+        {
+            tarSkade2D = collision.transform.GetComponent<TarSkade2D>();
+
+            tarSkade2D.TaSkade(skade);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

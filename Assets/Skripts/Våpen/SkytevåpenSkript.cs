@@ -123,13 +123,9 @@ public class SkytevåpenSkript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nesteTidSkyte)
         {
-            SpawnKula();
-            //nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
-            //if (prosjektilSkyting)
-            //{
-                
-            //}
+            nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
 
+            SpawnKula();
         }
     }
 
@@ -137,12 +133,9 @@ public class SkytevåpenSkript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nesteTidSkyte)
         {
+            nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
+            
             SpawnKula();
-            //nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
-            //if (prosjektilSkyting)
-            //{
-                
-            //}
         }
 
     }

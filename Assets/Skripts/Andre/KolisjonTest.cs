@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KantSkript : MonoBehaviour
+public class KolisjonTest : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,13 @@ public class KantSkript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "kula")
-        {
-            Destroy(collision.gameObject);
-        }
+        Debug.Log("Kolisjon collider");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Kolisjon trigger");
     }
 }
