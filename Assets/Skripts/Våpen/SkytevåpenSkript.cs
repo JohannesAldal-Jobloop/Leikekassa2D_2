@@ -37,11 +37,11 @@ public class SkytevåpenSkript : MonoBehaviour
 
         //if (!spelerDødSkript.respawner)
         //{
-            if (aktivVåpenVariabler.skyteModus == 1 && aktivVåpenVariabler.magasinMengdeNo != 0 && !reloader)
+            if (aktivVåpenVariabler.skyteModus == 1)
             {
                 FullAutoSkyting();
             }
-            else if (aktivVåpenVariabler.skyteModus == 2 && aktivVåpenVariabler.magasinMengdeNo != 0 && !reloader)
+            else if (aktivVåpenVariabler.skyteModus == 2)
             {
                 SemiAutoSkyting();
             }
@@ -58,6 +58,8 @@ public class SkytevåpenSkript : MonoBehaviour
         musPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         musPosition.z = 0;
         transform.up = (musPosition - transform.position) * -1;
+
+        transform.rotation = new Quaternion(0,0,transform.rotation.z,transform.rotation.w);
     }
 
     void FinnAlleAktiveGameobjectForScript()
@@ -102,6 +104,9 @@ public class SkytevåpenSkript : MonoBehaviour
         clone.fart = aktivVåpenVariabler.kuleFart;
         clone.maksRekkevidde = aktivVåpenVariabler.maksRekkevidde;
 
+        clone.transform.parent = null;
+        clone.transform.localScale = new Vector3(kuleList[aktivVåpenVariabler.kulaBrukt].transform.localScale.x, kuleList[aktivVåpenVariabler.kulaBrukt].transform.localScale.y, 1);
+
         aktivVåpenVariabler.magasinMengdeNo--;
 
     }
@@ -118,11 +123,12 @@ public class SkytevåpenSkript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nesteTidSkyte)
         {
-            nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
-            if (prosjektilSkyting)
-            {
-                SpawnKula();
-            }
+            SpawnKula();
+            //nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
+            //if (prosjektilSkyting)
+            //{
+                
+            //}
 
         }
     }
@@ -131,11 +137,12 @@ public class SkytevåpenSkript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nesteTidSkyte)
         {
-            nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
-            if (prosjektilSkyting)
-            {
-                SpawnKula();
-            }
+            SpawnKula();
+            //nesteTidSkyte = Time.time + 1f / aktivVåpenVariabler.angrepHastigheit;
+            //if (prosjektilSkyting)
+            //{
+                
+            //}
         }
 
     }

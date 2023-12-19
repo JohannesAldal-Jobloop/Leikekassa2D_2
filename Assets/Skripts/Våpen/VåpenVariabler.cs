@@ -50,7 +50,6 @@ public class VåpenVariabler : MonoBehaviour
     public int kulaBrukt = 0;
     public int magasinKapasitet = 10;
     public int magasinMengdeNo = 0;
-    public int kuleBrukt = 0;
 
     public ParticleSystem treffEffekt;
 

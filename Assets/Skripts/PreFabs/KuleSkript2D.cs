@@ -21,7 +21,7 @@ public class KuleSkript2D : MonoBehaviour
 
     void Start()
     {
-        transform.parent = null;
+        //transform.parent = null;
         kulaRB = GetComponent<Rigidbody2D>();
         kuleRestriksjoner = GameObject.Find("SpelSjef").GetComponent<KuleRestriksjoner>();
         spelerGO = GameObject.Find("Speler");
@@ -31,13 +31,14 @@ public class KuleSkript2D : MonoBehaviour
     void Update()
     {
         BevegFramover();
-        BulletRestriksjoner();
+        //BulletRestriksjoner();
+        kulaRB.gravityScale = 0.0f;
         //kuleRestriksjoner.KuleRestriksjonerFunk(opprinnelsePos, maksRekkevidde, gameObject);
     }
 
     void BevegFramover()
     {
-        kulaRB.velocity = Vector3.forward * fart * Time.deltaTime;
+        kulaRB.AddRelativeForce(Vector2.down * fart *Time.deltaTime, ForceMode2D.Force);
     }
 
     void BulletRestriksjoner()
@@ -49,19 +50,19 @@ public class KuleSkript2D : MonoBehaviour
 
 
 
-        if (transform.transform.position.x > (spawnPositionX + maksRekkevidde))
+        if (spelerGO.transform.position.x > (spawnPositionX + maksRekkevidde))
         {
             Destroy(gameObject);
         }
-        else if (transform.transform.position.y > (spawnPositionY + maksRekkevidde))
+        else if (spelerGO.transform.position.y > (spawnPositionY + maksRekkevidde))
         {
             Destroy(gameObject);
         }
-        else if (transform.transform.position.x < (spawnPositionX - maksRekkevidde))
+        else if (spelerGO.transform.position.x < (spawnPositionX - maksRekkevidde))
         {
             Destroy(gameObject);
         }
-        else if (transform.transform.position.y < (spawnPositionY - maksRekkevidde))
+        else if (spelerGO.transform.position.y < (spawnPositionY - maksRekkevidde))
         {
             Destroy(gameObject);
         }

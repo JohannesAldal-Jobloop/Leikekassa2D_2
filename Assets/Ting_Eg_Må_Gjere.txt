@@ -1,8 +1,9 @@
 
 TING EG MÅ GJERE:
 1. Lage skyting
-2. 
+2. Gjere om scalaen til kuler og løp til å endres etter størrelse på kula eller løp.
+3. 
 
 BUGS:
-1. 
+1. Speler snur seg på x og y aksen.
 2. 
